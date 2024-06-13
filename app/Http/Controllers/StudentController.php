@@ -15,6 +15,11 @@ class StudentController extends Controller
     public function index()
     {
         //
+        $personalDetails = Student::all();
+        return view('student.display', [
+        'personalDetails' =>  $personalDetails 
+
+        ]);
     }
 
     /**
@@ -39,8 +44,8 @@ class StudentController extends Controller
         //
         $student = new Student();
       
-        $student->first_name=$request->firstName;
-        $student->last_name=$request->lastName;
+        $student->full_name=$request->firstName;
+        // $student->last_name=$request->lastName;
         $student->email=$request->email;
         $student->phonenumber=$request->phonenumber;
         $student->address=$request->address;

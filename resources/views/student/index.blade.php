@@ -21,7 +21,7 @@
                 <a class="nav-link active" aria-current="page" href="/student/create">contact Form</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/display_todo">view Details</a>
+                <a class="nav-link" href="/student">view Details</a>
               </li>
               <li class="nav-item">
                 {{-- <a class="nav-link" href="#">Home page</a> --}}

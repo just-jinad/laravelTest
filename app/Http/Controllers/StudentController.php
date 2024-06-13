@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StudentController extends Controller
 {
@@ -15,7 +16,11 @@ class StudentController extends Controller
     public function index()
     {
         //
-        $personalDetails = Student::all();
+        // $select = DB::table('note_app')->where('user_id',Auth::user()->id )->get();
+
+        // $personalDetails = Student::all();
+        $personalDetails = Student::where('user_id', Auth::user()->id)->get();
+
         return view('student.display', [
         'personalDetails' =>  $personalDetails 
 
@@ -43,6 +48,8 @@ class StudentController extends Controller
     {
         //
         $student = new Student();
+        $auth = Auth::user()->id;
+        // return $auth;
       
         $student->full_name=$request->firstName;
         // $student->last_name=$request->lastName;
@@ -50,8 +57,9 @@ class StudentController extends Controller
         $student->phonenumber=$request->phonenumber;
         $student->address=$request->address;
         $student->password=$request->password;
+        $student->user_id=$auth;
         $student->save();
-        return redirect('/student');
+        return redirect('/student');    
     }
 
     /**
